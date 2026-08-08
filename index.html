@@ -1,11 +1,286 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifólio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ian Arruda — Desenvolvedor back-end</title>
+<meta name="description" content="Desenvolvedor back-end em Sobral, Ceará. PHP/Laravel e Java/Spring Boot. Sistemas de auditoria, avaliação de serviço público e geração de relatórios.">
+<link rel="canonical" href="https://ianarruda.dev/">
+<meta property="og:title" content="Ian Arruda — Desenvolvedor back-end">
+<meta property="og:description" content="Sistemas em produção numa prefeitura do interior do Ceará. PHP/Laravel e Java/Spring Boot.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://ianarruda.dev/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23161A17'/><rect y='6' width='32' height='7' fill='%23DEE8D8'/><rect y='19' width='32' height='7' fill='%23DEE8D8'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=" js";</script>
+<style>
+:root{
+  --paper:#F4F5EF;
+  --band:#DEE8D8;
+  --ink:#161A17;
+  --ink-soft:#5B655C;
+  --rule:#B4C0B1;
+  --stamp:#9E3B2E;
+  --hole:#E4E6DE;
+  --gutter:38px;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  position:relative;
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  padding:0 var(--gutter);
+}
+
+/* ---- margem picotada do formulário contínuo ---- */
+.feed{
+  position:absolute;top:0;bottom:0;width:var(--gutter);
+  background:var(--hole);
+  background-image:radial-gradient(circle at center, var(--paper) 3.6px, transparent 3.7px);
+  background-size:var(--gutter) 26px;
+  z-index:5;pointer-events:none;
+}
+.feed-l{left:0;border-right:1px dashed var(--rule)}
+.feed-r{right:0;border-left:1px dashed var(--rule)}
+
+.sheet{max-width:840px;margin:0 auto;padding:34px 0 0}
+
+/* ---- cabeçalho de formulário ---- */
+.formhead{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule);padding-bottom:9px;
+}
+
+/* ---- cabeçalho principal ---- */
+.top{padding:58px 0 26px}
+.name{
+  font-family:var(--mono);font-weight:600;
+  font-size:clamp(2.4rem,9vw,4.6rem);
+  letter-spacing:-.03em;line-height:.98;margin:0;
+}
+.role{
+  font-family:var(--mono);font-size:clamp(.82rem,2.4vw,.95rem);
+  color:var(--ink-soft);margin:16px 0 0;letter-spacing:.02em;
+}
+.thesis{
+  font-size:clamp(1.12rem,3.1vw,1.42rem);line-height:1.5;
+  margin:32px 0 0;max-width:38ch;
+}
+.thesis-mark{
+  font-family:var(--mono);font-size:clamp(.86rem,2.3vw,1rem);
+  color:var(--stamp);margin:20px 0 0;
+  border-left:2px solid var(--stamp);padding-left:13px;
+}
+
+/* ---- seções ---- */
+.folha{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);
+  display:flex;align-items:baseline;gap:14px;
+  margin:0 0 2px;padding-top:44px;font-weight:500;
+}
+.folha::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* ---- registros (as faixas verdes) ---- */
+.reg{
+  padding:20px 18px;border-bottom:1px solid var(--rule);
+}
+.reg:nth-of-type(odd){background:var(--band)}
+.reg-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.reg-name{font-family:var(--mono);font-weight:600;font-size:1.06rem;letter-spacing:-.01em}
+.reg-name a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
+.reg-name a:hover{border-bottom-color:var(--stamp);color:var(--stamp)}
+.reg-tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid var(--rule);padding:2px 7px;white-space:nowrap;
+}
+.reg-what{margin:9px 0 0;max-width:62ch}
+.reg-what code{font-family:var(--mono);font-size:.9em}
+.reg-stack{
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+  margin:9px 0 0;letter-spacing:.02em;
+}
+
+/* ---- contato ---- */
+.contato{display:flex;flex-wrap:wrap;gap:10px 34px;padding:22px 18px 0;font-family:var(--mono);font-size:.94rem}
+.contato a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.contato a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
+
+/* ---- rodapé ---- */
+.rodape{
+  margin-top:52px;border-top:1px solid var(--rule);
+  padding:14px 0 58px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.lohanne{color:var(--stamp);text-transform:none;letter-spacing:.02em;opacity:.85}
+
+a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
+
+/* ---- impressão linha a linha (só com JS; conteúdo visível por padrão) ---- */
+.js .pr{opacity:0;transform:translateY(7px)}
+.js .pr.is-in{animation:print .5s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes print{to{opacity:1;transform:none}}
+
+@media (max-width:640px){
+  :root{--gutter:20px}
+  .feed{background-size:var(--gutter) 24px}
+  .top{padding:40px 0 22px}
+  .reg{padding:17px 13px}
+  .contato{padding-left:13px;padding-right:13px}
+  .formhead{justify-content:flex-start;gap:6px 16px}
+  .formhead span:last-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .pr{opacity:1;transform:none;animation:none!important}
+}
+</style>
 </head>
 <body>
-    <p>Eu te amo, Lohanne.</p>
+
+<div class="feed feed-l" aria-hidden="true"></div>
+<div class="feed feed-r" aria-hidden="true"></div>
+
+<div class="sheet">
+
+  <div class="formhead">
+    <span>Portfólio · Ian Arruda</span>
+    <span>Sobral — Ceará</span>
+    <span>Cont. 1 de 1</span>
+  </div>
+
+  <header class="top">
+    <h1 class="name pr">IAN<br>ARRUDA</h1>
+    <p class="role pr">Desenvolvedor back-end &nbsp;·&nbsp; PHP/Laravel e Java/Spring&nbsp;Boot</p>
+    <p class="thesis pr">Escrevo os sistemas que uma prefeitura usa por dentro: auditoria, geração de relatórios e avaliação de atendimento.</p>
+    <p class="thesis-mark pr">Código que roda sem ninguém ver.</p>
+  </header>
+
+  <section aria-labelledby="s1">
+    <h2 class="folha" id="s1">Fl. 01 — Sistemas em produção</h2>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name">CUIDA</span>
+        <span class="reg-tag">Equipe de 6</span>
+      </div>
+      <p class="reg-what">Sistema de auditoria interna da Controladoria Geral do Município. Migrei módulos do legado em PHP puro para Laravel e construí do zero o módulo de documentos das auditorias, a timeline do processo e um chat com comunicação assíncrona.</p>
+      <p class="reg-stack">Laravel · PostgreSQL · Blade · JavaScript</p>
+    </article>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name">AvaliaSol</span>
+        <span class="reg-tag">Responsável único</span>
+      </div>
+      <p class="reg-what">Instalado em postos de saúde da rede municipal, é onde o cidadão avalia o atendimento que acabou de receber. Assumi uma base herdada e respondo sozinho pela manutenção e evolução dela em produção.</p>
+      <p class="reg-stack">Laravel · PostgreSQL</p>
+    </article>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name">RCI</span>
+        <span class="reg-tag">Em desenvolvimento</span>
+      </div>
+      <p class="reg-what">Gerador de relatórios agnóstico à fonte de dados. Quem usa monta um modelo <code>.docx</code> com chaves no lugar dos números, aponta cada chave para uma fonte e o sistema devolve o documento pronto — para cada secretaria, para cada servidor, sem digitação manual.</p>
+      <p class="reg-stack">Java 21 · Spring Boot 4 · PostgreSQL · Firebird · XLSX</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="s2">
+    <h2 class="folha" id="s2">Fl. 02 — Código aberto</h2>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo">Quilombo</a></span>
+        <span class="reg-tag">Extensão universitária</span>
+      </div>
+      <p class="reg-what">Plataforma multi-tenant que deixa uma comunidade quilombola montar a própria página institucional em poucos cliques. Cada comunidade responde por um subdomínio, e o isolamento entre elas é feito com Row Level Security no PostgreSQL, em schema compartilhado para baratear a infraestrutura: se a política falhar, a consulta volta vazia em vez de vazar. Feito com a comunidade do Batoque.</p>
+      <p class="reg-stack">Java 21 · Spring Boot 4 · Hibernate · Flyway · Next.js · OAuth2</p>
+    </article>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/govbr-pades">govbr-pades</a></span>
+        <span class="reg-tag">Biblioteca · MIT</span>
+      </div>
+      <p class="reg-what">Biblioteca PHP para assinatura digital PAdES em PDFs pelo gov.br. Está no começo, e nasceu com PSR-12, testes em PHPUnit, análise estática e CI barrando o que não passa.</p>
+      <p class="reg-stack">PHP · PHPUnit · PHPStan · Containerfile</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="s3">
+    <h2 class="folha" id="s3">Fl. 03 — Sites para clientes</h2>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name">Freelance</span>
+        <span class="reg-tag">3 entregues · 2 em produção</span>
+      </div>
+      <p class="reg-what">Sites institucionais e landing pages para negócios locais, do levantamento com o cliente até a entrega no ar.</p>
+      <p class="reg-stack">HTML · CSS · JavaScript</p>
+    </article>
+  </section>
+
+  <section aria-labelledby="s4">
+    <h2 class="folha" id="s4">Fl. 04 — Contato</h2>
+    <div class="contato pr">
+      <a href="mailto:contato@ianarruda.dev">contato@ianarruda.dev</a>
+      <a href="https://github.com/ArrudaFreitas">github.com/ArrudaFreitas</a>
+      <a href="https://linkedin.com/in/ian-arruda">linkedin.com/in/ian-arruda</a>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <span>Fim do documento</span>
+    <span class="lohanne">eu te amo, Lohanne</span>
+    <span>Sobral · CE</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var els = [].slice.call(document.querySelectorAll('.pr'));
+  var show = function(el){ el.classList.add('is-in'); };
+
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(show);
+    return;
+  }
+
+  // cabeçalho imprime na carga, escalonado
+  els.slice(0,4).forEach(function(el,i){
+    el.style.animationDelay = (i*120)+'ms';
+    show(el);
+  });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      show(e.target);
+      io.unobserve(e.target);
+    });
+  }, {rootMargin:'0px 0px -10% 0px'});
+
+  els.slice(4).forEach(function(el){ io.observe(el); });
+
+  // rede de segurança: nada fica invisível por mais de 3s
+  setTimeout(function(){ els.forEach(show); }, 3000);
+})();
+</script>
+
 </body>
 </html>
