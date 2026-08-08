@@ -7,7 +7,7 @@
 <meta name="description" content="Desenvolvedor back-end em Sobral, Ceará. PHP/Laravel e Java/Spring Boot. Sistemas de auditoria, avaliação de serviço público e geração de relatórios.">
 <link rel="canonical" href="https://ianarruda.dev/">
 <meta property="og:title" content="Ian Arruda — Desenvolvedor back-end">
-<meta property="og:description" content="Sistemas em produção numa prefeitura do interior do Ceará. PHP/Laravel e Java/Spring Boot.">
+<meta property="og:description" content="Desenvolvedor back-end em Sobral, Ceará. PHP/Laravel e Java/Spring Boot.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://ianarruda.dev/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23161A17'/><rect y='6' width='32' height='7' fill='%23DEE8D8'/><rect y='19' width='32' height='7' fill='%23DEE8D8'/></svg>">
@@ -77,12 +77,6 @@ body{
   font-size:clamp(1.12rem,3.1vw,1.42rem);line-height:1.5;
   margin:32px 0 0;max-width:38ch;
 }
-.thesis-mark{
-  font-family:var(--mono);font-size:clamp(.86rem,2.3vw,1rem);
-  color:var(--stamp);margin:20px 0 0;
-  border-left:2px solid var(--stamp);padding-left:13px;
-}
-
 /* ---- seções ---- */
 .folha{
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;
@@ -155,16 +149,14 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
 <div class="sheet">
 
   <div class="formhead">
-    <span>Portfólio · Ian Arruda</span>
+    <span>Ian Arruda</span>
     <span>Sobral — Ceará</span>
-    <span>Cont. 1 de 1</span>
   </div>
 
   <header class="top">
     <h1 class="name pr">IAN<br>ARRUDA</h1>
     <p class="role pr">Desenvolvedor back-end &nbsp;·&nbsp; PHP/Laravel e Java/Spring&nbsp;Boot</p>
-    <p class="thesis pr">Escrevo os sistemas que uma prefeitura usa por dentro: auditoria, geração de relatórios e avaliação de atendimento.</p>
-    <p class="thesis-mark pr">Código que roda sem ninguém ver.</p>
+    <p class="thesis pr">Trabalho na Controladoria Geral do Município de Sobral, no Ceará, em sistemas de auditoria, geração de relatórios e avaliação de serviço público.</p>
   </header>
 
   <section aria-labelledby="s1">
@@ -184,7 +176,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
         <span class="reg-name">AvaliaSol</span>
         <span class="reg-tag">Responsável único</span>
       </div>
-      <p class="reg-what">Instalado em postos de saúde da rede municipal, é onde o cidadão avalia o atendimento que acabou de receber. Assumi uma base herdada e respondo sozinho pela manutenção e evolução dela em produção.</p>
+      <p class="reg-what">Sistema de avaliação de atendimento instalado em postos de saúde da rede municipal, usado pelo próprio cidadão. Assumi uma base de código existente e respondo pela manutenção e evolução em produção.</p>
       <p class="reg-stack">Laravel · PostgreSQL</p>
     </article>
 
@@ -193,7 +185,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
         <span class="reg-name">RCI</span>
         <span class="reg-tag">Em desenvolvimento</span>
       </div>
-      <p class="reg-what">Gerador de relatórios agnóstico à fonte de dados. Quem usa monta um modelo <code>.docx</code> com chaves no lugar dos números, aponta cada chave para uma fonte e o sistema devolve o documento pronto — para cada secretaria, para cada servidor, sem digitação manual.</p>
+      <p class="reg-what">Gerador de relatórios agnóstico à fonte de dados. O usuário monta um modelo <code>.docx</code> com chaves, associa cada chave a uma fonte configurada e o sistema devolve o documento preenchido. Suporta expressões de cálculo entre colunas.</p>
       <p class="reg-stack">Java 21 · Spring Boot 4 · PostgreSQL · Firebird · XLSX</p>
     </article>
   </section>
@@ -206,7 +198,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
         <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo">Quilombo</a></span>
         <span class="reg-tag">Extensão universitária</span>
       </div>
-      <p class="reg-what">Plataforma multi-tenant que deixa uma comunidade quilombola montar a própria página institucional em poucos cliques. Cada comunidade responde por um subdomínio, e o isolamento entre elas é feito com Row Level Security no PostgreSQL, em schema compartilhado para baratear a infraestrutura: se a política falhar, a consulta volta vazia em vez de vazar. Feito com a comunidade do Batoque.</p>
+      <p class="reg-what">Plataforma multi-tenant para comunidades quilombolas criarem e administrarem a própria página institucional. Cada comunidade é resolvida por subdomínio, com isolamento por Row Level Security no PostgreSQL em schema compartilhado. Desenvolvido em parceria com a comunidade do Batoque.</p>
       <p class="reg-stack">Java 21 · Spring Boot 4 · Hibernate · Flyway · Next.js · OAuth2</p>
     </article>
 
@@ -215,7 +207,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
         <span class="reg-name"><a href="https://github.com/ArrudaFreitas/govbr-pades">govbr-pades</a></span>
         <span class="reg-tag">Biblioteca · MIT</span>
       </div>
-      <p class="reg-what">Biblioteca PHP para assinatura digital PAdES em PDFs pelo gov.br. Está no começo, e nasceu com PSR-12, testes em PHPUnit, análise estática e CI barrando o que não passa.</p>
+      <p class="reg-what">Biblioteca PHP para assinatura digital PAdES em PDFs via gov.br. Em desenvolvimento inicial, escrita em PSR-12, com testes em PHPUnit, análise estática e integração contínua.</p>
       <p class="reg-stack">PHP · PHPUnit · PHPStan · Containerfile</p>
     </article>
   </section>
@@ -228,7 +220,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
         <span class="reg-name">Freelance</span>
         <span class="reg-tag">3 entregues · 2 em produção</span>
       </div>
-      <p class="reg-what">Sites institucionais e landing pages para negócios locais, do levantamento com o cliente até a entrega no ar.</p>
+      <p class="reg-what">Sites institucionais e landing pages para clientes.</p>
       <p class="reg-stack">HTML · CSS · JavaScript</p>
     </article>
   </section>
@@ -243,9 +235,9 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
   </section>
 
   <footer class="rodape">
-    <span>Fim do documento</span>
+    <span>Ian Arruda · Sobral, CE</span>
     <span class="lohanne">eu te amo, Lohanne</span>
-    <span>Sobral · CE</span>
+    <span>2026</span>
   </footer>
 
 </div>
