@@ -180,8 +180,9 @@ html[lang="pt-BR"] [data-l="en"]{display:none}
 .reg:nth-of-type(odd){background:var(--band)}
 .reg-top{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
 .reg-name{font-family:var(--mono);font-weight:600;font-size:1.06rem;letter-spacing:-.01em}
-.reg-name a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
-.reg-name a:hover{border-bottom-color:var(--stamp);color:var(--stamp)}
+.reg-name a{color:inherit;text-decoration:none;border-bottom:2px solid var(--stamp)}
+.reg-name a::after{content:"\2197";content:"\2197" / "";color:var(--stamp);font-size:.8em;font-weight:500;margin-left:.3em}
+.reg-name a:hover{color:var(--stamp)}
 .reg-tag{
   font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-soft);border:1px solid var(--rule);padding:2px 7px;white-space:nowrap;
@@ -207,8 +208,22 @@ html[lang="pt-BR"] [data-l="en"]{display:none}
   font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
   margin:9px 0 0;letter-spacing:.02em;
 }
-.reg-foot a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
-.reg-foot a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
+.reg-foot{align-items:center}
+
+/* ---- links como botões: borda, sombra de carimbo, seta ---- */
+.go{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.02em;line-height:1.3;
+  color:var(--ink);background:var(--paper);
+  border:1.5px solid var(--ink);padding:6px 11px;
+  text-decoration:none;overflow-wrap:anywhere;
+  box-shadow:3px 3px 0 var(--rule);
+  transition:background .15s,color .15s,box-shadow .15s,transform .15s;
+}
+.go::after{content:"\2197";content:"\2197" / "";color:var(--stamp);font-size:1.1em;font-weight:600}
+.go[href^="mailto:"]::after{content:"\2192";content:"\2192" / ""}
+.go:hover{background:var(--ink);color:var(--paper);box-shadow:1px 1px 0 var(--rule);transform:translate(2px,2px)}
+.go:hover::after{color:var(--paper)}
 
 /* ---- carimbo de venda fechada ---- */
 .stamp{
@@ -245,8 +260,8 @@ html[lang="pt-BR"] [data-l="en"]{display:none}
 
 /* ---- contato ---- */
 .contato{display:flex;flex-wrap:wrap;gap:10px 34px;padding:22px 18px 0;font-family:var(--mono);font-size:.94rem}
-.contato a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-.contato a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
+.contato{gap:14px 16px}
+.contato .go{font-size:13.5px;padding:9px 15px}
 
 /* ---- rodapé ---- */
 .rodape{
@@ -281,6 +296,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
   .formhead .fh-loc{display:none}
 }
 @media (prefers-reduced-motion:reduce){
+  .go{transition:none}
+  .go:hover{transform:none}
   .js .pr{opacity:1;transform:none;animation:none!important}
   .caret{animation:none}
 }
@@ -330,7 +347,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://www.proveralocacoes.com/">Proverá Locações</a></span>
+        <span class="reg-name"><a href="https://www.proveralocacoes.com/" target="_blank" rel="noopener">Proverá Locações</a></span>
         <span class="reg-tag"><span data-l="pt">No ar</span><span data-l="en">Live</span></span>
         <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
@@ -345,13 +362,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
       </ul>
       <div class="reg-foot">
         <span>HTML · CSS · JavaScript · Vercel</span>
-        <a href="https://www.proveralocacoes.com/">proveralocacoes.com</a>
+        <a class="go" href="https://www.proveralocacoes.com/" target="_blank" rel="noopener">proveralocacoes.com</a>
       </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://marceliapsicanalista.com/">Marcélia Cavalcante</a></span>
+        <span class="reg-name"><a href="https://marceliapsicanalista.com/" target="_blank" rel="noopener">Marcélia Cavalcante</a></span>
         <span class="reg-tag"><span data-l="pt">No ar</span><span data-l="en">Live</span></span>
         <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
@@ -359,13 +376,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
       <p class="reg-what" data-l="en">Website for a psychoanalyst. The visual identity is built from abstract shapes of the mind, drawn from psychoanalytic concepts and from femininity, since her clients are women.</p>
       <div class="reg-foot">
         <span>HTML · CSS · JavaScript</span>
-        <a href="https://marceliapsicanalista.com/">marceliapsicanalista.com</a>
+        <a class="go" href="https://marceliapsicanalista.com/" target="_blank" rel="noopener">marceliapsicanalista.com</a>
       </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://arrudafreitas.github.io/luciana/">Luciana Gineli</a></span>
+        <span class="reg-name"><a href="https://arrudafreitas.github.io/luciana/" target="_blank" rel="noopener">Luciana Gineli</a></span>
         <span class="reg-tag"><span data-l="pt">Reta final</span><span data-l="en">Final stage</span></span>
         <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
@@ -375,7 +392,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
       <p class="reg-note" data-l="en">In the final copywriting stage; after that, only the domain purchase remains.</p>
       <div class="reg-foot">
         <span>HTML · CSS · JavaScript</span>
-        <a href="https://arrudafreitas.github.io/luciana/">arrudafreitas.github.io/luciana</a>
+        <a class="go" href="https://arrudafreitas.github.io/luciana/" target="_blank" rel="noopener">arrudafreitas.github.io/luciana</a>
       </div>
     </article>
   </section>
@@ -397,7 +414,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://sistemacuida.sobral.ce.gov.br/">CUIDA</a></span>
+        <span class="reg-name"><a href="https://sistemacuida.sobral.ce.gov.br/" target="_blank" rel="noopener">CUIDA</a></span>
         <span class="reg-tag"><span data-l="pt">Equipe de 6</span><span data-l="en">Team of 6</span></span>
       </div>
       <p class="reg-what" data-l="pt">Sistema de auditoria do município de Sobral, com mais de 200 mil habitantes, usado pelas suas 27 secretarias. Simplifica e automatiza o processo de auditoria e atende, todo ano, às exigências do Estado.</p>
@@ -412,13 +429,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
       </ul>
       <div class="reg-foot">
         <span>Laravel · PostgreSQL · Blade · JavaScript</span>
-        <a href="https://sistemacuida.sobral.ce.gov.br/">sistemacuida.sobral.ce.gov.br</a>
+        <a class="go" href="https://sistemacuida.sobral.ce.gov.br/" target="_blank" rel="noopener">sistemacuida.sobral.ce.gov.br</a>
       </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://avaliasol.sobral.ce.gov.br/">AvaliaSol</a></span>
+        <span class="reg-name"><a href="https://avaliasol.sobral.ce.gov.br/" target="_blank" rel="noopener">AvaliaSol</a></span>
         <span class="reg-tag"><span data-l="pt">Responsável único</span><span data-l="en">Sole developer</span></span>
       </div>
       <p class="reg-what" data-l="pt">Avaliação da infraestrutura e dos serviços públicos do município, aberta aos mais de 200 mil cidadãos de Sobral. Recebe centenas de avaliações por dia.</p>
@@ -432,20 +449,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
       </ul>
       <div class="reg-foot">
         <span>Laravel · PostgreSQL</span>
-        <a href="https://avaliasol.sobral.ce.gov.br/">avaliasol.sobral.ce.gov.br</a>
+        <a class="go" href="https://avaliasol.sobral.ce.gov.br/" target="_blank" rel="noopener">avaliasol.sobral.ce.gov.br</a>
       </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/govbr-pades">govbr-pades</a></span>
+        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/govbr-pades" target="_blank" rel="noopener">govbr-pades</a></span>
         <span class="reg-tag"><span data-l="pt">Biblioteca · MIT</span><span data-l="en">Library · MIT</span></span>
       </div>
       <p class="reg-what" data-l="pt">Biblioteca de assinatura digital usada no processo de auditoria. Injeta assinaturas gov.br nos documentos, para que sejam assinados dentro do próprio ecossistema da Controladoria.</p>
       <p class="reg-what" data-l="en">Digital signature library used in the audit process. It embeds gov.br signatures into documents, so they are signed inside the Comptroller’s own ecosystem.</p>
       <div class="reg-foot">
         <span>PHP · PAdES · PHPUnit · PHPStan</span>
-        <a href="https://github.com/ArrudaFreitas/govbr-pades">github.com/ArrudaFreitas/govbr-pades</a>
+        <a class="go" href="https://github.com/ArrudaFreitas/govbr-pades" target="_blank" rel="noopener"><span data-l="pt">Código no GitHub</span><span data-l="en">Code on GitHub</span></a>
       </div>
     </article>
   </section>
@@ -462,14 +479,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo">Quilombo</a></span>
+        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo" target="_blank" rel="noopener">Quilombo</a></span>
         <span class="reg-tag"><span data-l="pt">TCC</span><span data-l="en">Final project</span></span>
       </div>
       <p class="reg-what" data-l="pt">Trabalho de conclusão de curso, feito em parceria com o Quilombo do Batoque. Motor de páginas institucionais personalizáveis, simples a ponto de leigos montarem a página da comunidade e divulgarem a própria cultura.</p>
       <p class="reg-what" data-l="en">Final degree project, built with Quilombo do Batoque, an Afro-Brazilian community rooted in resistance to slavery. An engine for customisable institutional pages, simple enough for non-technical people to build their community’s page and share its culture.</p>
       <div class="reg-foot">
         <span>Java 21 · Spring Boot 4 · PostgreSQL · Next.js · OAuth2</span>
-        <a href="https://github.com/ArrudaFreitas/Quilombo">github.com/ArrudaFreitas/Quilombo</a>
+        <a class="go" href="https://github.com/ArrudaFreitas/Quilombo" target="_blank" rel="noopener"><span data-l="pt">Código no GitHub</span><span data-l="en">Code on GitHub</span></a>
       </div>
     </article>
   </section>
@@ -587,9 +604,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offs
   <section aria-labelledby="s6">
     <h2 class="folha" id="s6"><span data-l="pt">06 — Contato</span><span data-l="en">06 — Contact</span></h2>
     <div class="contato pr">
-      <a href="mailto:contato@ianarruda.dev">contato@ianarruda.dev</a>
-      <a href="https://github.com/ArrudaFreitas">github.com/ArrudaFreitas</a>
-      <a href="https://linkedin.com/in/ian-arruda">linkedin.com/in/ian-arruda</a>
+      <a class="go" href="mailto:contato@ianarruda.dev">contato@ianarruda.dev</a>
+      <a class="go" href="https://github.com/ArrudaFreitas" target="_blank" rel="noopener">github.com/ArrudaFreitas</a>
+      <a class="go" href="https://linkedin.com/in/ian-arruda" target="_blank" rel="noopener">linkedin.com/in/ian-arruda</a>
     </div>
   </section>
 
