@@ -1,20 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ian Arruda — Desenvolvedor back-end</title>
-<meta name="description" content="Desenvolvedor back-end em Sobral, Ceará. PHP/Laravel e Java/Spring Boot. Sistemas de auditoria, avaliação de serviço público e geração de relatórios.">
+<title>Ian Arruda — Full-stack developer</title>
+<script>
+/* idioma antes do primeiro desenho: escolha salva > idioma do navegador > inglês */
+(function(d){
+  var l;
+  try { l = localStorage.getItem('lang'); } catch(e){}
+  if (l !== 'pt' && l !== 'en') {
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    l = /^pt\b/i.test(n) ? 'pt' : 'en';
+  }
+  d.documentElement.lang = l === 'pt' ? 'pt-BR' : 'en';
+  d.documentElement.className += ' js';
+})(document);
+</script>
+<meta name="description" content="Full-stack developer in Sobral, Ceará, Brazil. PHP/Laravel, Java/Spring Boot, TypeScript, Vue and React. Audit and public-service systems for the City of Sobral, and freelance websites.">
 <link rel="canonical" href="https://ianarruda.dev/">
-<meta property="og:title" content="Ian Arruda — Desenvolvedor back-end">
-<meta property="og:description" content="Desenvolvedor back-end em Sobral, Ceará. PHP/Laravel e Java/Spring Boot.">
+<meta property="og:title" content="Ian Arruda — Full-stack developer">
+<meta property="og:description" content="Full-stack developer in Sobral, Ceará, Brazil. PHP/Laravel, Java/Spring Boot, TypeScript, Vue and React.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://ianarruda.dev/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23161A17'/><rect y='6' width='32' height='7' fill='%23DEE8D8'/><rect y='19' width='32' height='7' fill='%23DEE8D8'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-<script>document.documentElement.className+=" js";</script>
 <style>
 :root{
   --paper:#F4F5EF;
@@ -40,6 +54,10 @@ body{
   line-height:1.6;
 }
 
+/* ---- idioma: cada texto existe em PT e EN; só o do <html lang> aparece ---- */
+html[lang="en"] [data-l="pt"],
+html[lang="pt-BR"] [data-l="en"]{display:none}
+
 /* ---- a folha: o picotado é a borda dela, não a da janela ---- */
 .paper{
   position:relative;
@@ -62,30 +80,83 @@ body{
 .feed-r{right:0;border-left:1px dashed var(--rule)}
 
 .sheet{max-width:840px;margin:0 auto;padding:34px 0 0}
+.sheet + .dobra{margin-top:56px}
+.dobra + .sheet{padding-top:8px}
+
+/* ---- dobra picotada entre folhas: atravessa a folha inteira, margens inclusive ---- */
+.dobra{
+  position:relative;z-index:6;
+  height:34px;
+  margin:0 calc(var(--gutter) * -1);
+  background:linear-gradient(to bottom,
+    transparent 0,
+    rgba(22,26,23,.045) 46%,
+    rgba(22,26,23,.07) 50%,
+    rgba(255,255,255,.55) 51%,
+    transparent 100%);
+}
+.dobra::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;
+  background:repeating-linear-gradient(90deg,var(--ink-soft) 0 5px,transparent 5px 10px);
+  opacity:.5;
+}
+.dobra::after,
+.dobra-r{
+  content:"";position:absolute;top:50%;width:8px;height:12px;margin-top:-6px;
+  background:var(--desk);
+}
+.dobra::after{left:0;clip-path:polygon(0 0,100% 50%,0 100%)}
+.dobra-r{right:0;clip-path:polygon(100% 0,0 50%,100% 100%)}
 
 /* ---- cabeçalho de formulário ---- */
 .formhead{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-soft);
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  border-bottom:1px solid var(--rule);padding-bottom:9px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--rule);padding-bottom:7px;
 }
+.formhead > :first-child{margin-right:auto}
+
+/* ---- PT | EN ---- */
+.lang{display:none;align-items:center;gap:2px;margin:-4px 0}
+.js .lang{display:flex}
+.lang button{
+  font:inherit;letter-spacing:inherit;text-transform:inherit;
+  color:var(--ink-soft);background:none;border:0;cursor:pointer;
+  min-width:28px;min-height:24px;padding:3px 6px;
+}
+.lang button[aria-pressed="true"]{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--stamp);text-underline-offset:4px;text-decoration-thickness:1.5px}
+.lang button:hover{color:var(--stamp)}
+.lang-sep{color:var(--rule)}
 
 /* ---- cabeçalho principal ---- */
 .top{padding:58px 0 26px}
 .name{
+  position:relative;
   font-family:var(--mono);font-weight:600;
   font-size:clamp(2.4rem,9vw,4.6rem);
   letter-spacing:-.03em;line-height:.98;margin:0;
 }
+/* o nome é digitado por cima de uma cópia invisível, que segura o espaço */
+.name-type{position:absolute;left:0;top:0;right:0;white-space:pre-line}
+.name.is-typing .name-ghost{visibility:hidden}
+.caret{
+  display:inline-block;width:.56em;height:.76em;margin-left:.08em;
+  vertical-align:-.02em;background:var(--ink);
+  animation:blink 1.06s steps(1) infinite;
+}
+.name.is-typing .caret{animation:none}
+@keyframes blink{50%{opacity:0}}
+
 .role{
   font-family:var(--mono);font-size:clamp(.82rem,2.4vw,.95rem);
   color:var(--ink-soft);margin:16px 0 0;letter-spacing:.02em;
 }
 .thesis{
   font-size:clamp(1.12rem,3.1vw,1.42rem);line-height:1.5;
-  margin:32px 0 0;max-width:38ch;
+  margin:32px 0 0;max-width:40ch;
 }
+
 /* ---- seções ---- */
 .folha{
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;
@@ -94,13 +165,20 @@ body{
   margin:0 0 2px;padding-top:44px;font-weight:500;
 }
 .folha::after{content:"";flex:1;height:1px;background:var(--rule)}
+.dobra + .sheet > section:first-child > .folha{padding-top:28px}
+
+.sec-intro{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;
+  color:var(--ink-soft);margin:10px 0 14px;padding:0 18px;
+}
+.sec-intro strong{color:var(--stamp);font-weight:600}
 
 /* ---- registros (as faixas verdes) ---- */
 .reg{
   padding:20px 18px;border-bottom:1px solid var(--rule);
 }
 .reg:nth-of-type(odd){background:var(--band)}
-.reg-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.reg-top{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
 .reg-name{font-family:var(--mono);font-weight:600;font-size:1.06rem;letter-spacing:-.01em}
 .reg-name a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .reg-name a:hover{border-bottom-color:var(--stamp);color:var(--stamp)}
@@ -109,11 +187,61 @@ body{
   color:var(--ink-soft);border:1px solid var(--rule);padding:2px 7px;white-space:nowrap;
 }
 .reg-what{margin:9px 0 0;max-width:62ch}
-.reg-what code{font-family:var(--mono);font-size:.9em}
-.reg-stack{
+.reg-note{
+  font-family:var(--mono);font-size:12px;color:var(--stamp);
+  margin:8px 0 0;letter-spacing:.01em;max-width:70ch;
+}
+/* palavras-chave do domínio (automação, gestão) */
+.reg-kw{
+  list-style:none;margin:11px 0 0;padding:0;
+  display:flex;flex-wrap:wrap;gap:6px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.01em;
+}
+.reg-kw li{
+  color:var(--ink);background:rgba(244,245,239,.75);
+  border:1px solid var(--rule);border-left:2px solid var(--stamp);
+  padding:1px 8px 2px 7px;
+}
+.reg-foot{
+  display:flex;justify-content:space-between;align-items:baseline;gap:4px 20px;flex-wrap:wrap;
   font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
   margin:9px 0 0;letter-spacing:.02em;
 }
+.reg-foot a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+.reg-foot a:hover{color:var(--stamp);border-bottom-color:var(--stamp)}
+
+/* ---- carimbo de venda fechada ---- */
+.stamp{
+  margin-left:auto;
+  font-family:var(--mono);font-weight:600;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--stamp);border:1.5px solid var(--stamp);border-radius:2px;
+  padding:2px 8px 2px 10px;white-space:nowrap;
+  transform:rotate(-4deg);opacity:.88;mix-blend-mode:multiply;
+}
+
+/* ---- tempo na prefeitura ---- */
+.cargo{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;color:var(--ink-soft);
+  margin:10px 0 14px;padding:0 18px;
+  display:flex;flex-wrap:wrap;gap:2px 0;
+}
+.cargo > span + span::before{content:"·";margin:0 .6em;color:var(--rule)}
+.cargo .periodo{color:var(--ink);font-weight:500}
+
+/* ---- competências: tabela de formulário, faixas alternadas ---- */
+.skills{margin:0;border-top:1px solid var(--rule)}
+.sk{
+  display:grid;grid-template-columns:180px 1fr;gap:4px 18px;
+  padding:13px 18px;border-bottom:1px solid var(--rule);
+}
+.sk:nth-child(odd){background:var(--band)}
+.sk dt{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px;font-weight:500;
+}
+.sk dd{margin:0;font-family:var(--mono);font-size:13px;line-height:1.75}
+.sk dd > span{white-space:nowrap}
+.sk dd > span:not(:last-child)::after{content:" ·";color:var(--ink-soft)}
 
 /* ---- contato ---- */
 .contato{display:flex;flex-wrap:wrap;gap:10px 34px;padding:22px 18px 0;font-family:var(--mono);font-size:.94rem}
@@ -129,7 +257,7 @@ body{
 }
 .lohanne{color:var(--stamp);text-transform:none;letter-spacing:.02em;opacity:.85}
 
-a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
 
 /* ---- impressão linha a linha (só com JS; conteúdo visível por padrão) ---- */
 .js .pr{opacity:0;transform:translateY(7px)}
@@ -141,12 +269,20 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
   .feed{background-size:var(--gutter) 24px}
   .top{padding:40px 0 22px}
   .reg{padding:17px 13px}
+  .sec-intro,.cargo{padding-left:13px;padding-right:13px}
+  .cargo{flex-direction:column}
+  .cargo > span + span::before{content:none}
   .contato{padding-left:13px;padding-right:13px}
-  .formhead{justify-content:flex-start;gap:6px 16px}
-  .formhead span:last-child{display:none}
+  .sk{grid-template-columns:1fr;padding:13px}
+  .formhead{gap:6px 14px}
+  .dobra::after,.dobra-r{width:6px;height:10px;margin-top:-5px}
+}
+@media (max-width:380px){
+  .formhead .fh-loc{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .js .pr{opacity:1;transform:none;animation:none!important}
+  .caret{animation:none}
 }
 </style>
 </head>
@@ -157,87 +293,299 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
 <div class="feed feed-l" aria-hidden="true"></div>
 <div class="feed feed-r" aria-hidden="true"></div>
 
+<!-- ============ folha 1: cabeçalho e freelas ============ -->
 <div class="sheet">
 
   <div class="formhead">
     <span>Ian Arruda</span>
-    <span>Sobral — Ceará</span>
+    <span class="fh-loc">Sobral — Ceará</span>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-set-lang="pt" lang="pt-BR" aria-label="Português (PT)">PT</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button type="button" data-set-lang="en" lang="en" aria-label="English (EN)">EN</button>
+    </div>
   </div>
 
   <header class="top">
-    <h1 class="name pr">IAN<br>ARRUDA</h1>
-    <p class="role pr">Desenvolvedor back-end &nbsp;·&nbsp; PHP/Laravel e Java/Spring&nbsp;Boot</p>
-    <p class="thesis pr">Trabalho na Controladoria Geral do Município de Sobral, no Ceará, em sistemas de auditoria, geração de relatórios e avaliação de serviço público.</p>
+    <h1 class="name" aria-label="Ian Arruda">
+      <span class="name-ghost" aria-hidden="true">IAN<br>ARRUDA<span class="caret"></span></span>
+      <span class="name-type" aria-hidden="true"></span>
+    </h1>
+    <p class="role pr">
+      <span data-l="pt">Desenvolvedor full-stack &nbsp;·&nbsp; PHP/Laravel · Java/Spring&nbsp;Boot · Vue · React/Next.js</span>
+      <span data-l="en">Full-stack developer &nbsp;·&nbsp; PHP/Laravel · Java/Spring&nbsp;Boot · Vue · React/Next.js</span>
+    </p>
+    <p class="thesis pr">
+      <span data-l="pt">Trabalho na Controladoria Geral do Município de Sobral, no Ceará, em sistemas de auditoria e avaliação de serviço público. Também desenvolvo sites como freelancer.</span>
+      <span data-l="en">I work at the Comptroller General’s Office of Sobral, Ceará, on audit and public-service evaluation systems. I also build websites as a freelancer.</span>
+    </p>
   </header>
 
   <section aria-labelledby="s1">
-    <h2 class="folha" id="s1">Fl. 01 — Sistemas em produção</h2>
+    <h2 class="folha" id="s1">01 — Freelance</h2>
+    <p class="sec-intro pr">
+      <span data-l="pt"><strong>Três vendas fechadas.</strong> Negociei, desenhei e desenvolvi cada site diretamente com o cliente.</span>
+      <span data-l="en"><strong>Three closed sales.</strong> I negotiated, designed and built each site directly with the client.</span>
+    </p>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name">CUIDA</span>
-        <span class="reg-tag">Equipe de 6</span>
+        <span class="reg-name"><a href="https://www.proveralocacoes.com/">Proverá Locações</a></span>
+        <span class="reg-tag"><span data-l="pt">No ar</span><span data-l="en">Live</span></span>
+        <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
-      <p class="reg-what">Sistema de auditoria interna da Controladoria Geral do Município. Migrei módulos do legado em PHP puro para Laravel e construí do zero o módulo de documentos das auditorias, a timeline do processo e um chat com comunicação assíncrona.</p>
-      <p class="reg-stack">Laravel · PostgreSQL · Blade · JavaScript</p>
+      <p class="reg-what" data-l="pt">Aluguel de equipamentos para obra. Identidade visual marcante e layout mobile first; o cliente monta o orçamento no catálogo e envia pelo WhatsApp, sem servidor nem back-end.</p>
+      <p class="reg-what" data-l="en">Construction equipment rental. Bold visual identity and a mobile-first layout; customers build a quote from the catalogue and send it over WhatsApp, with no server or back-end.</p>
+      <ul class="reg-kw">
+        <li><span data-l="pt">Automação de orçamentos</span><span data-l="en">Quote automation</span></li>
+        <li><span data-l="pt">Catálogo digital</span><span data-l="en">Digital catalogue</span></li>
+        <li><span data-l="pt">Integração com WhatsApp</span><span data-l="en">WhatsApp integration</span></li>
+        <li><span data-l="pt">Geração de leads</span><span data-l="en">Lead generation</span></li>
+        <li><span data-l="pt">Busca e filtros</span><span data-l="en">Search &amp; filters</span></li>
+      </ul>
+      <div class="reg-foot">
+        <span>HTML · CSS · JavaScript · Vercel</span>
+        <a href="https://www.proveralocacoes.com/">proveralocacoes.com</a>
+      </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name">AvaliaSol</span>
-        <span class="reg-tag">Responsável único</span>
+        <span class="reg-name"><a href="https://marceliapsicanalista.com/">Marcélia Cavalcante</a></span>
+        <span class="reg-tag"><span data-l="pt">No ar</span><span data-l="en">Live</span></span>
+        <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
-      <p class="reg-what">Sistema de avaliação de atendimento instalado em postos de saúde da rede municipal, usado pelo próprio cidadão. Assumi uma base de código existente e respondo pela manutenção e evolução em produção.</p>
-      <p class="reg-stack">Laravel · PostgreSQL</p>
+      <p class="reg-what" data-l="pt">Site de psicanalista. Identidade visual feita de formas abstratas da mente, inspiradas em conceitos da psicanálise e na feminilidade, já que o público da cliente são mulheres.</p>
+      <p class="reg-what" data-l="en">Website for a psychoanalyst. The visual identity is built from abstract shapes of the mind, drawn from psychoanalytic concepts and from femininity, since her clients are women.</p>
+      <div class="reg-foot">
+        <span>HTML · CSS · JavaScript</span>
+        <a href="https://marceliapsicanalista.com/">marceliapsicanalista.com</a>
+      </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name">RCI</span>
-        <span class="reg-tag">Em desenvolvimento</span>
+        <span class="reg-name"><a href="https://arrudafreitas.github.io/luciana/">Luciana Gineli</a></span>
+        <span class="reg-tag"><span data-l="pt">Reta final</span><span data-l="en">Final stage</span></span>
+        <span class="stamp"><span data-l="pt">Vendido</span><span data-l="en">Sold</span></span>
       </div>
-      <p class="reg-what">Gerador de relatórios agnóstico à fonte de dados. O usuário monta um modelo <code>.docx</code> com chaves, associa cada chave a uma fonte configurada e o sistema devolve o documento preenchido. Suporta expressões de cálculo entre colunas.</p>
-      <p class="reg-stack">Java 21 · Spring Boot 4 · PostgreSQL · Firebird · XLSX</p>
+      <p class="reg-what" data-l="pt">Página de atendimento humanizado e empático. Texturas de tecidos e panos dão o tom de acolhimento e aconchego.</p>
+      <p class="reg-what" data-l="en">A page for humane, empathetic care. Fabric and cloth textures set a warm, welcoming tone.</p>
+      <p class="reg-note" data-l="pt">Na etapa final de copywriting; depois disso, falta só a compra do domínio.</p>
+      <p class="reg-note" data-l="en">In the final copywriting stage; after that, only the domain purchase remains.</p>
+      <div class="reg-foot">
+        <span>HTML · CSS · JavaScript</span>
+        <a href="https://arrudafreitas.github.io/luciana/">arrudafreitas.github.io/luciana</a>
+      </div>
     </article>
   </section>
 
+</div>
+
+<div class="dobra" aria-hidden="true"><span class="dobra-r"></span></div>
+
+<!-- ============ folha 2: prefeitura ============ -->
+<div class="sheet">
+
   <section aria-labelledby="s2">
-    <h2 class="folha" id="s2">Fl. 02 — Código aberto</h2>
+    <h2 class="folha" id="s2"><span data-l="pt">02 — Prefeitura de Sobral</span><span data-l="en">02 — City of Sobral</span></h2>
+    <p class="cargo pr">
+      <span><span data-l="pt">Controladoria Geral do Município</span><span data-l="en">Comptroller General’s Office</span></span>
+      <span><span data-l="pt">Desenvolvedor Full-stack Júnior</span><span data-l="en">Junior Full-stack Developer</span></span>
+      <span class="periodo"><span data-l="pt">mai 2025 — atual</span><span data-l="en">May 2025 — present</span><span class="dur" data-since="2025-05"></span></span>
+    </p>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo">Quilombo</a></span>
-        <span class="reg-tag">Extensão universitária</span>
+        <span class="reg-name"><a href="https://sistemacuida.sobral.ce.gov.br/">CUIDA</a></span>
+        <span class="reg-tag"><span data-l="pt">Equipe de 6</span><span data-l="en">Team of 6</span></span>
       </div>
-      <p class="reg-what">Plataforma multi-tenant para comunidades quilombolas criarem e administrarem a própria página institucional. Cada comunidade é resolvida por subdomínio, com isolamento por Row Level Security no PostgreSQL em schema compartilhado. Desenvolvido em parceria com a comunidade do Batoque.</p>
-      <p class="reg-stack">Java 21 · Spring Boot 4 · Hibernate · Flyway · Next.js · OAuth2</p>
+      <p class="reg-what" data-l="pt">Sistema de auditoria do município de Sobral, com mais de 200 mil habitantes, usado pelas suas 27 secretarias. Simplifica e automatiza o processo de auditoria e atende, todo ano, às exigências do Estado.</p>
+      <p class="reg-what" data-l="en">Audit system for the municipality of Sobral (200,000+ residents), used across its 27 departments. It simplifies and automates the audit process and meets the state’s requirements every year.</p>
+      <ul class="reg-kw">
+        <li><span data-l="pt">Automação de processos</span><span data-l="en">Process automation</span></li>
+        <li><span data-l="pt">Gestão de auditorias</span><span data-l="en">Audit management</span></li>
+        <li><span data-l="pt">Gestão documental</span><span data-l="en">Document management</span></li>
+        <li>Workflow</li>
+        <li><span data-l="pt">Rastreabilidade</span><span data-l="en">Traceability</span></li>
+        <li><span data-l="pt">Conformidade</span><span data-l="en">Compliance</span></li>
+      </ul>
+      <div class="reg-foot">
+        <span>Laravel · PostgreSQL · Blade · JavaScript</span>
+        <a href="https://sistemacuida.sobral.ce.gov.br/">sistemacuida.sobral.ce.gov.br</a>
+      </div>
+    </article>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name"><a href="https://avaliasol.sobral.ce.gov.br/">AvaliaSol</a></span>
+        <span class="reg-tag"><span data-l="pt">Responsável único</span><span data-l="en">Sole developer</span></span>
+      </div>
+      <p class="reg-what" data-l="pt">Avaliação da infraestrutura e dos serviços públicos do município, aberta aos mais de 200 mil cidadãos de Sobral. Recebe centenas de avaliações por dia.</p>
+      <p class="reg-what" data-l="en">Lets citizens rate the city’s public infrastructure and services; open to Sobral’s 200,000+ residents. It receives hundreds of ratings a day.</p>
+      <ul class="reg-kw">
+        <li><span data-l="pt">Gestão pública</span><span data-l="en">Public management</span></li>
+        <li><span data-l="pt">Pesquisa de satisfação</span><span data-l="en">Satisfaction surveys</span></li>
+        <li><span data-l="pt">Indicadores de qualidade</span><span data-l="en">Quality indicators</span></li>
+        <li><span data-l="pt">Coleta de dados</span><span data-l="en">Data collection</span></li>
+        <li><span data-l="pt">Participação cidadã</span><span data-l="en">Citizen engagement</span></li>
+      </ul>
+      <div class="reg-foot">
+        <span>Laravel · PostgreSQL</span>
+        <a href="https://avaliasol.sobral.ce.gov.br/">avaliasol.sobral.ce.gov.br</a>
+      </div>
     </article>
 
     <article class="reg pr">
       <div class="reg-top">
         <span class="reg-name"><a href="https://github.com/ArrudaFreitas/govbr-pades">govbr-pades</a></span>
-        <span class="reg-tag">Biblioteca · MIT</span>
+        <span class="reg-tag"><span data-l="pt">Biblioteca · MIT</span><span data-l="en">Library · MIT</span></span>
       </div>
-      <p class="reg-what">Biblioteca PHP para assinatura digital PAdES em PDFs via gov.br. Em desenvolvimento inicial, escrita em PSR-12, com testes em PHPUnit, análise estática e integração contínua.</p>
-      <p class="reg-stack">PHP · PHPUnit · PHPStan · Containerfile</p>
+      <p class="reg-what" data-l="pt">Biblioteca de assinatura digital usada no processo de auditoria. Injeta assinaturas gov.br nos documentos, para que sejam assinados dentro do próprio ecossistema da Controladoria.</p>
+      <p class="reg-what" data-l="en">Digital signature library used in the audit process. It embeds gov.br signatures into documents, so they are signed inside the Comptroller’s own ecosystem.</p>
+      <div class="reg-foot">
+        <span>PHP · PAdES · PHPUnit · PHPStan</span>
+        <a href="https://github.com/ArrudaFreitas/govbr-pades">github.com/ArrudaFreitas/govbr-pades</a>
+      </div>
     </article>
   </section>
 
+</div>
+
+<div class="dobra" aria-hidden="true"><span class="dobra-r"></span></div>
+
+<!-- ============ folha 3: pessoais, formação, contato ============ -->
+<div class="sheet">
+
   <section aria-labelledby="s3">
-    <h2 class="folha" id="s3">Fl. 03 — Sites para clientes</h2>
+    <h2 class="folha" id="s3"><span data-l="pt">03 — Projetos pessoais</span><span data-l="en">03 — Personal projects</span></h2>
 
     <article class="reg pr">
       <div class="reg-top">
-        <span class="reg-name">Freelance</span>
-        <span class="reg-tag">3 entregues · 2 em produção</span>
+        <span class="reg-name"><a href="https://github.com/ArrudaFreitas/Quilombo">Quilombo</a></span>
+        <span class="reg-tag"><span data-l="pt">TCC</span><span data-l="en">Final project</span></span>
       </div>
-      <p class="reg-what">Sites institucionais e landing pages para clientes.</p>
-      <p class="reg-stack">HTML · CSS · JavaScript</p>
+      <p class="reg-what" data-l="pt">Trabalho de conclusão de curso, feito em parceria com o Quilombo do Batoque. Motor de páginas institucionais personalizáveis, simples a ponto de leigos montarem a página da comunidade e divulgarem a própria cultura.</p>
+      <p class="reg-what" data-l="en">Final degree project, built with Quilombo do Batoque, an Afro-Brazilian community rooted in resistance to slavery. An engine for customisable institutional pages, simple enough for non-technical people to build their community’s page and share its culture.</p>
+      <div class="reg-foot">
+        <span>Java 21 · Spring Boot 4 · PostgreSQL · Next.js · OAuth2</span>
+        <a href="https://github.com/ArrudaFreitas/Quilombo">github.com/ArrudaFreitas/Quilombo</a>
+      </div>
     </article>
   </section>
 
   <section aria-labelledby="s4">
-    <h2 class="folha" id="s4">Fl. 04 — Contato</h2>
+    <h2 class="folha" id="s4"><span data-l="pt">04 — Competências</span><span data-l="en">04 — Skills</span></h2>
+    <p class="sec-intro pr">
+      <span data-l="pt">Além do código: processo de desenvolvimento, organização do trabalho em equipe e contato direto com o cliente.</span>
+      <span data-l="en">Beyond code: development process, teamwork organization and direct work with clients.</span>
+    </p>
+    <dl class="skills pr">
+      <div class="sk">
+        <dt>Back-end</dt>
+        <dd>
+          <span>PHP</span>
+          <span>Laravel</span>
+          <span>Java 21</span>
+          <span>Spring Boot</span>
+          <span>JPA/Hibernate</span>
+          <span>Flyway</span>
+          <span><span data-l="pt">APIs REST</span><span data-l="en">REST APIs</span></span>
+          <span>OAuth2</span>
+          <span>JWT</span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt>Front-end</dt>
+        <dd>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>TypeScript</span>
+          <span>Vue</span>
+          <span>React</span>
+          <span>Next.js</span>
+          <span>Blade</span>
+          <span>Mobile first</span>
+          <span><span data-l="pt">Acessibilidade (WCAG)</span><span data-l="en">Accessibility (WCAG)</span></span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt><span data-l="pt">Banco de dados</span><span data-l="en">Databases</span></dt>
+        <dd>
+          <span>PostgreSQL</span>
+          <span>Row Level Security</span>
+          <span>Multi-tenant</span>
+          <span>Firebird</span>
+          <span>SQL</span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt><span data-l="pt">Desenvolvimento</span><span data-l="en">Engineering</span></dt>
+        <dd>
+          <span>Git</span>
+          <span>GitHub</span>
+          <span>Feature branches</span>
+          <span>Pull requests</span>
+          <span>Conventional Commits</span>
+          <span><span data-l="pt">Testes (PHPUnit)</span><span data-l="en">Testing (PHPUnit)</span></span>
+          <span><span data-l="pt">Análise estática (PHPStan)</span><span data-l="en">Static analysis (PHPStan)</span></span>
+          <span>CI (GitHub Actions)</span>
+          <span>Docker</span>
+          <span>Linux</span>
+          <span><span data-l="pt">Migração de legado</span><span data-l="en">Legacy migration</span></span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt><span data-l="pt">Ágil e organização</span><span data-l="en">Agile &amp; organization</span></dt>
+        <dd>
+          <span>Scrum</span>
+          <span>Jira</span>
+          <span><span data-l="pt">Gestão de backlog</span><span data-l="en">Backlog management</span></span>
+          <span>Spec-driven development</span>
+          <span><span data-l="pt">Documentação técnica (README, ADR)</span><span data-l="en">Technical documentation (README, ADR)</span></span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt><span data-l="pt">Produto e cliente</span><span data-l="en">Product &amp; clients</span></dt>
+        <dd>
+          <span><span data-l="pt">Levantamento de requisitos</span><span data-l="en">Requirements gathering</span></span>
+          <span>Briefing</span>
+          <span><span data-l="pt">Prototipação</span><span data-l="en">Prototyping</span></span>
+          <span><span data-l="pt">Identidade visual</span><span data-l="en">Visual identity</span></span>
+          <span><span data-l="pt">Negociação e venda</span><span data-l="en">Negotiation &amp; sales</span></span>
+          <span>Copywriting</span>
+        </dd>
+      </div>
+      <div class="sk">
+        <dt><span data-l="pt">Idiomas</span><span data-l="en">Languages</span></dt>
+        <dd>
+          <span><span data-l="pt">Português (nativo)</span><span data-l="en">Portuguese (native)</span></span>
+          <span><span data-l="pt">Inglês (B2)</span><span data-l="en">English (B2)</span></span>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="s5">
+    <h2 class="folha" id="s5"><span data-l="pt">05 — Formação</span><span data-l="en">05 — Education</span></h2>
+
+    <article class="reg pr">
+      <div class="reg-top">
+        <span class="reg-name"><span data-l="pt">Análise e Desenvolvimento de Sistemas</span><span data-l="en">Systems Analysis and Development</span></span>
+        <span class="reg-tag"><span data-l="pt">Concluído</span><span data-l="en">Completed</span></span>
+      </div>
+      <p class="reg-what" data-l="pt">Curso superior de tecnologia voltado a projetar, desenvolver e manter sistemas: programação, banco de dados, engenharia de software e gestão de projetos. O TCC foi o Quilombo.</p>
+      <p class="reg-what" data-l="en">Higher-education technology degree focused on designing, building and maintaining software: programming, databases, software engineering and project management. My final project was Quilombo.</p>
+      <div class="reg-foot">
+        <span><span data-l="pt">Tecnólogo</span><span data-l="en">Technologist degree</span> · Unopar / Anhanguera</span>
+        <span><span data-l="pt">fev 2024 — jul 2026</span><span data-l="en">Feb 2024 — Jul 2026</span></span>
+      </div>
+    </article>
+  </section>
+
+  <section aria-labelledby="s6">
+    <h2 class="folha" id="s6"><span data-l="pt">06 — Contato</span><span data-l="en">06 — Contact</span></h2>
     <div class="contato pr">
       <a href="mailto:contato@ianarruda.dev">contato@ianarruda.dev</a>
       <a href="https://github.com/ArrudaFreitas">github.com/ArrudaFreitas</a>
@@ -256,20 +604,94 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
 
 <script>
 (function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- idioma ---------- */
+  var TITLE = { pt: 'Ian Arruda — Desenvolvedor full-stack', en: 'Ian Arruda — Full-stack developer' };
+  var buttons = [].slice.call(document.querySelectorAll('[data-set-lang]'));
+
+  function current(){ return root.lang === 'pt-BR' ? 'pt' : 'en'; }
+  function apply(l){
+    root.lang = l === 'pt' ? 'pt-BR' : 'en';
+    document.title = TITLE[l];
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === l ? 'true' : 'false');
+    });
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var l = b.getAttribute('data-set-lang');
+      try { localStorage.setItem('lang', l); } catch(e){}
+      apply(l);
+    });
+  });
+  apply(current());
+
+  /* ---------- tempo na prefeitura (contando o mês corrente, como no LinkedIn) ---------- */
+  [].slice.call(document.querySelectorAll('.dur[data-since]')).forEach(function(el){
+    var p = el.getAttribute('data-since').split('-');
+    var now = new Date();
+    var m = (now.getFullYear() - +p[0]) * 12 + (now.getMonth() + 1 - +p[1]) + 1;
+    if (m < 1) return;
+    var y = Math.floor(m / 12), r = m % 12;
+    var pt = [], en = [];
+    if (y) { pt.push(y + (y > 1 ? ' anos' : ' ano')); en.push(y + (y > 1 ? ' yrs' : ' yr')); }
+    if (r) { pt.push(r + (r > 1 ? ' meses' : ' mês')); en.push(r + (r > 1 ? ' mos' : ' mo')); }
+    el.innerHTML = '<span data-l="pt"> · ' + pt.join(' e ') + '</span>' +
+                   '<span data-l="en"> · ' + en.join(' ') + '</span>';
+  });
+
+  /* ---------- impressão linha a linha ---------- */
   var els = [].slice.call(document.querySelectorAll('.pr'));
+  var head = els.filter(function(el){ return el.closest('.top'); });
+  var rest = els.filter(function(el){ return head.indexOf(el) < 0; });
   var show = function(el){ el.classList.add('is-in'); };
 
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  function printHead(){
+    head.forEach(function(el, i){
+      el.style.animationDelay = (i * 120) + 'ms';
+      show(el);
+    });
+  }
+
+  /* ---------- o nome digitado no terminal ---------- */
+  function typeName(done){
+    var h = document.querySelector('.name');
+    var out = h && h.querySelector('.name-type');
+    if (!out || reduce) { done(); return; }
+
+    var text = 'IAN\nARRUDA';
+    var txt = document.createTextNode('');
+    var caret = document.createElement('span');
+    caret.className = 'caret';
+    out.appendChild(txt);
+    out.appendChild(caret);
+    h.classList.add('is-typing');
+
+    var i = 0;
+    function step(){
+      txt.data = text.slice(0, ++i);
+      if (i >= text.length) {
+        setTimeout(function(){
+          h.classList.remove('is-typing');
+          out.textContent = '';
+          done();
+        }, 140);
+        return;
+      }
+      setTimeout(step, text.charAt(i - 1) === '\n' ? 240 : 55 + Math.random() * 75);
+    }
+    setTimeout(step, 450);
+  }
+
+  if (!('IntersectionObserver' in window) || reduce) {
     els.forEach(show);
+    typeName(function(){});
     return;
   }
 
-  // cabeçalho imprime na carga, escalonado
-  els.slice(0,4).forEach(function(el,i){
-    el.style.animationDelay = (i*120)+'ms';
-    show(el);
-  });
+  typeName(printHead);
 
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -279,7 +701,7 @@ a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
     });
   }, {rootMargin:'0px 0px -10% 0px'});
 
-  els.slice(4).forEach(function(el){ io.observe(el); });
+  rest.forEach(function(el){ io.observe(el); });
 
   // rede de segurança: nada fica invisível por mais de 3s
   setTimeout(function(){ els.forEach(show); }, 3000);
